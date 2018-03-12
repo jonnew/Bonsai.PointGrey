@@ -78,7 +78,7 @@ namespace Bonsai.PointGrey
                             uint cameraPowerValueRead = 0;
                             do
                             {
-                                System.Threading.Thread.Sleep(MillisecondsToSleep);
+                                Thread.Sleep(MillisecondsToSleep);
                                 cameraPowerValueRead = camera.ReadRegister(CameraPower);
                             }
                             while ((cameraPowerValueRead & CameraPowerValue) == 0);
@@ -206,9 +206,10 @@ namespace Bonsai.PointGrey
                                     }
 
                                     try { camera.RetrieveBuffer(image); }
-                                    catch (FC2Exception)
+                                    catch (FC2Exception ex)
                                     {
                                         if (capture == 0) break;
+                                        else if (IgnoreImageConsistencyError && ex.CauseType == ErrorType.ImageConsistencyError) continue;
                                         else throw;
                                     }
 
