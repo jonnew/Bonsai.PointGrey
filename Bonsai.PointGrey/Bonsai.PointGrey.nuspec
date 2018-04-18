@@ -18,6 +18,6 @@
     <file src="Bonsai.PointGrey.props" target="build\net45"/>
     <file src="Bonsai.PointGrey.targets" target="build\net45"/>
     <file src="..\Externals\FlyCapture2Managed\net\**\*.dll" target="build\net45\bin"/>
-    <file src="..\Externals\FlyCapture2Managed\native\**\*.dll" target="build\native\bin"/>
+    <!--<file src="..\Externals\FlyCapture2Managed\native\**\*.dll" target="build\native\bin"/>-->
   </files>
 </package>
